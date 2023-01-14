@@ -4,6 +4,7 @@ const hls = require("hls-server")
 const fs = require("fs")
 const cors = require("cors")
 const port=process.env.PORT || 2000
+
 const corsOptions ={
     origin:'http://localhost:3000', 
     credentials:true,            //access-control-allow-credentials:true
@@ -73,7 +74,7 @@ app.post("/upload", upload, (req, res) => {
     })
     .on('progress', function (progress) {
         console.log(fileName+" "+progress)
-        // res.write('<h1>' + "percent"+fileName + '</h1>');
+        res.write('<h1>' + "percent"+fileName + '</h1>');
     })
     .on("end",()=>{
         fs.unlink(inputFile,(err)=>{if(err) console.log(err)});
