@@ -74,7 +74,7 @@ app.post("/upload", upload, (req, res) => {
     })
     .on('progress', function (progress) {
         console.log(fileName+" "+progress)
-        res.write('<h1>' + "percent"+fileName + '</h1>');
+        res.write('<h1>' + progress +" % " + '</h1>');
     })
     .on("end",()=>{
         fs.unlink(inputFile,(err)=>{if(err) console.log(err)});
